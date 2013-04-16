@@ -6,7 +6,7 @@ class WebfontsResource extends Resource {
   }
 
   /**
-   * Retrieves the list of fonts currently served by the Google Web Fonts Developer API
+   * Retrieves the list of fonts currently served by the Google Fonts Developer API
    *
    * [sort] - Enables sorting of the list
    *   Allowed values:
@@ -18,13 +18,13 @@ class WebfontsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<WebfontList> list({String sort, Map optParams}) {
-    var completer = new Completer();
+  async.Future<WebfontList> list({core.String sort, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "webfonts";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (sort != null && !["alpha", "date", "popularity", "style", "trending"].contains(sort)) {
       paramErrors.add("Allowed values for sort: alpha, date, popularity, style, trending");
     }

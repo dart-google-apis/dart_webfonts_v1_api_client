@@ -4,11 +4,11 @@
 
 Auto-generated client library for accessing the webfonts v1 API.
 
-#### ![Logo](http://www.google.com/images/icons/feature/font_api-16.png) Google Web Fonts Developer API - webfonts v1
+#### ![Logo](http://www.google.com/images/icons/feature/font_api-16.png) Google Fonts Developer API - webfonts v1
 
-The Google Web Fonts Developer API.
+The Google Fonts Developer API.
 
-Official API documentation: http://code.google.com/apis/webfonts/docs/developer_api.html
+Official API documentation: https://developers.google.com/fonts/docs/developer_api
 
 For web applications:
 ```

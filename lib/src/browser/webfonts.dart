@@ -4,8 +4,8 @@ part of webfonts_v1_api_browser;
 /** The Google Fonts Developer API. */
 class Webfonts extends BrowserClient {
 
-  WebfontsResource _webfonts;
-  WebfontsResource get webfonts => _webfonts;
+  WebfontsResource_ _webfonts;
+  WebfontsResource_ get webfonts => _webfonts;
 
   /**
    * Data format for the response.
@@ -59,6 +59,6 @@ class Webfonts extends BrowserClient {
   Webfonts([oauth.OAuth2 auth]) : super(auth) {
     basePath = "/webfonts/v1/";
     rootUrl = "https://www.googleapis.com:443/";
-    _webfonts = new WebfontsResource(this);
+    _webfonts = new WebfontsResource_(this);
   }
 }

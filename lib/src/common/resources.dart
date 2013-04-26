@@ -1,8 +1,8 @@
 part of webfonts_v1_api_client;
 
-class WebfontsResource extends Resource {
+class WebfontsResource_ extends Resource {
 
-  WebfontsResource(Client client) : super(client) {
+  WebfontsResource_(Client client) : super(client) {
   }
 
   /**
@@ -38,7 +38,7 @@ class WebfontsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 

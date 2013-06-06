@@ -58,7 +58,7 @@ class Webfonts extends BrowserClient {
 
   Webfonts([oauth.OAuth2 auth]) : super(auth) {
     basePath = "/webfonts/v1/";
-    rootUrl = "https://www.googleapis.com:443/";
+    rootUrl = "https://www.googleapis.com/";
     _webfonts = new WebfontsResource_(this);
   }
 }

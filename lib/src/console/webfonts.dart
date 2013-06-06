@@ -58,7 +58,7 @@ class Webfonts extends ConsoleClient {
 
   Webfonts([oauth2.OAuth2Console auth]) : super(auth) {
     basePath = "/webfonts/v1/";
-    rootUrl = "https://www.googleapis.com:443/";
+    rootUrl = "https://www.googleapis.com/";
     _webfonts = new WebfontsResource_(this);
   }
 }

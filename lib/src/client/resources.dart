@@ -19,7 +19,6 @@ class WebfontsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<WebfontList> list({core.String sort, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "webfonts";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -38,16 +37,13 @@ class WebfontsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new WebfontList.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new WebfontList.fromJson(data));
   }
 }
 

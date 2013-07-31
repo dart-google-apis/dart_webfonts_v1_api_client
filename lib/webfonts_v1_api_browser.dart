@@ -1,14 +1,14 @@
-library webfonts_v1_api_browser;
+library webfonts_v1_api.browser;
 
-import "webfonts_v1_api_client.dart";
-export "webfonts_v1_api_client.dart";
-
-import "dart:core" as core;
-import "dart:html" as html;
-import "dart:async" as async;
-import "dart:json" as JSON;
-import "package:js/js.dart" as js;
 import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 
-part "src/browser/browser_client.dart";
-part "src/browser/webfonts.dart";
+import 'package:google_webfonts_v1_api/src/cloud_api_browser.dart';
+import "package:google_webfonts_v1_api/webfonts_v1_api_client.dart";
+
+/** The Google Fonts Developer API. */
+class Webfonts extends Client with BrowserClient {
+
+  final oauth.OAuth2 auth;
+
+  Webfonts([oauth.OAuth2 this.auth]);
+}

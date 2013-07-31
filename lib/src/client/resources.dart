@@ -1,9 +1,11 @@
-part of webfonts_v1_api_client;
+part of webfonts_v1_api;
 
-class WebfontsResource_ extends Resource {
+class WebfontsResource_ {
 
-  WebfontsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  WebfontsResource_(Client client) :
+      _client = client;
 
   /**
    * Retrieves the list of fonts currently served by the Google Fonts Developer API

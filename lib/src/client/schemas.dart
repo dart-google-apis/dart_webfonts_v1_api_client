@@ -1,4 +1,4 @@
-part of webfonts_v1_api_client;
+part of webfonts_v1_api;
 
 class Webfont {
 
@@ -6,7 +6,7 @@ class Webfont {
   core.String family;
 
   /** The font files (with all supported scripts) for each one of the available variants, as a key : value map. */
-  WebfontFiles files;
+  core.Map<core.String, core.String> files;
 
   /** This kind represents a webfont object in the webfonts service. */
   core.String kind;
@@ -29,7 +29,7 @@ class Webfont {
       family = json["family"];
     }
     if (json.containsKey("files")) {
-      files = new WebfontFiles.fromJson(json["files"]);
+      files = _mapMap(json["files"]);
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -38,16 +38,10 @@ class Webfont {
       lastModified = json["lastModified"];
     }
     if (json.containsKey("subsets")) {
-      subsets = [];
-      json["subsets"].forEach((item) {
-        subsets.add(item);
-      });
+      subsets = json["subsets"].toList();
     }
     if (json.containsKey("variants")) {
-      variants = [];
-      json["variants"].forEach((item) {
-        variants.add(item);
-      });
+      variants = json["variants"].toList();
     }
     if (json.containsKey("version")) {
       version = json["version"];
@@ -62,7 +56,7 @@ class Webfont {
       output["family"] = family;
     }
     if (files != null) {
-      output["files"] = files.toJson();
+      output["files"] = _mapMap(files);
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -71,16 +65,10 @@ class Webfont {
       output["lastModified"] = lastModified;
     }
     if (subsets != null) {
-      output["subsets"] = new core.List();
-      subsets.forEach((item) {
-        output["subsets"].add(item);
-      });
+      output["subsets"] = subsets.toList();
     }
     if (variants != null) {
-      output["variants"] = new core.List();
-      variants.forEach((item) {
-        output["variants"].add(item);
-      });
+      output["variants"] = variants.toList();
     }
     if (version != null) {
       output["version"] = version;
@@ -90,26 +78,6 @@ class Webfont {
   }
 
   /** Return String representation of Webfont */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** The font files (with all supported scripts) for each one of the available variants, as a key : value map. */
-class WebfontFiles {
-
-  /** Create new WebfontFiles from JSON data */
-  WebfontFiles.fromJson(core.Map json) {
-  }
-
-  /** Create JSON Object for WebfontFiles */
-  core.Map toJson() {
-    var output = new core.Map();
-
-
-    return output;
-  }
-
-  /** Return String representation of WebfontFiles */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -125,10 +93,7 @@ class WebfontList {
   /** Create new WebfontList from JSON data */
   WebfontList.fromJson(core.Map json) {
     if (json.containsKey("items")) {
-      items = [];
-      json["items"].forEach((item) {
-        items.add(new Webfont.fromJson(item));
-      });
+      items = json["items"].map((itemsItem) => new Webfont.fromJson(itemsItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -140,10 +105,7 @@ class WebfontList {
     var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new core.List();
-      items.forEach((item) {
-        output["items"].add(item.toJson());
-      });
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -157,3 +119,16 @@ class WebfontList {
 
 }
 
+core.Map _mapMap(core.Map source, [core.Object convert(core.Object source) = null]) {
+  assert(source != null);
+  var result = new dart_collection.LinkedHashMap();
+  source.forEach((core.String key, value) {
+    assert(key != null);
+    if(convert == null) {
+      result[key] = value;
+    } else {
+      result[key] = convert(value);
+    }
+  });
+  return result;
+}

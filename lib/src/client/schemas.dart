@@ -78,7 +78,7 @@ class Webfont {
   }
 
   /** Return String representation of Webfont */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -115,7 +115,7 @@ class WebfontList {
   }
 
   /** Return String representation of WebfontList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 

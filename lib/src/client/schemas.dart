@@ -2,6 +2,9 @@ part of webfonts_v1_api;
 
 class Webfont {
 
+  /** The category of the font. */
+  core.String category;
+
   /** The name of the font. */
   core.String family;
 
@@ -25,6 +28,9 @@ class Webfont {
 
   /** Create new Webfont from JSON data */
   Webfont.fromJson(core.Map json) {
+    if (json.containsKey("category")) {
+      category = json["category"];
+    }
     if (json.containsKey("family")) {
       family = json["family"];
     }
@@ -52,6 +58,9 @@ class Webfont {
   core.Map toJson() {
     var output = new core.Map();
 
+    if (category != null) {
+      output["category"] = category;
+    }
     if (family != null) {
       output["family"] = family;
     }

@@ -7,6 +7,7 @@ import 'package:google_webfonts_v1_api/src/console_client.dart';
 import "package:google_webfonts_v1_api/webfonts_v1_api_client.dart";
 
 /** The Google Fonts Developer API. */
+@deprecated
 class Webfonts extends Client with ConsoleClient {
 
   final oauth2.OAuth2Console auth;
